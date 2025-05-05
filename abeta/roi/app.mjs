@@ -1,2 +1,2 @@
-import { makeAbetaApp } from "../abeta.mjs";
-makeAbetaApp(true);
+import { makeObjectAnnotator } from "../objectAnnotator.mjs";
+makeObjectAnnotator();
