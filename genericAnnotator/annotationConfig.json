@@ -1,0 +1,47 @@
+{
+    "modes": {
+        "roi": {
+            "enabled": true,
+            "description": "ROI (Region of Interest) mode for drawing and editing regions"
+        },
+        "bound": {
+            "enabled": true,
+            "description": "Bounding box mode for drawing and editing boxes"
+        }
+    },
+    "classes": [
+        {
+            "name": "Diffuse",
+            "color": "red",
+            "strokeWidth": 1,
+            "key": "D"
+        },
+        {
+            "name": "Cored",
+            "color": "blue",
+            "strokeWidth": 1,
+            "key": "F"
+        },
+        {
+            "name": "Dyshoric",
+            "color": "green",
+            "strokeWidth": 1,
+            "key": "G"
+        },
+        {
+            "name": "CAA",
+            "color": "magenta",
+            "strokeWidth": 1,
+            "key": "H"
+        }
+    ],
+    "hotkeys": {
+        "classes": true,
+        "reviewNext": "M",
+        "reviewPrevious": "N",
+        "classifyNext": "P",
+        "classifyPrevious": "O"
+    },
+    "annotationType": "A-beta bounding boxes",
+    "annotationDescription": "Created by the A-Beta Bounding Box App"
+}
