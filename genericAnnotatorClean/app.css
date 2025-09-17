@@ -1,0 +1,95 @@
+body {
+    background-color: rgb(65, 64, 64);
+}
+
+.content {
+    text-align: left;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    grid-template-columns: 1fr auto;
+    background-color: white;
+}
+
+.content>div {
+    border: thin black solid;
+}
+
+#header {
+    grid-column: span 2;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    column-gap: 1em;
+    padding: 2px 5px;
+}
+
+#header .dsa-link {
+    width: 20em;
+}
+
+#current-file:empty::after {
+    content: 'No file selected';
+    color: lightgray;
+}
+
+.viewer {
+    height: 100%;
+}
+
+.mode-toggle {
+    margin: 10px;
+    display: flex;
+    gap: 10px;
+}
+
+.mode-button {
+    padding: 8px 16px;
+    border: 1px solid #ccc;
+    background-color: #f5f5f5;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.mode-button:hover {
+    background-color: #e0e0e0;
+}
+
+.mode-button.active {
+    background-color: #007bff;
+    color: white;
+    border-color: #0056b3;
+}
+
+.mouse-coords {
+    margin-left: 10px;
+    color: #666;
+    font-size: 0.9em;
+}
+
+.mouse-coords span {
+    color: #333;
+    background-color: #e8f4f8;
+    padding: 2px 4px;
+    border-radius: 3px;
+    border: 1px solid #b3d9e6;
+    font-family: monospace;
+}
+
+.hotkey-info {
+    margin-left: 10px;
+    color: #666;
+    font-size: 0.9em;
+}
+
+.hotkey-info strong {
+    color: #333;
+    background-color: #f0f0f0;
+    padding: 2px 4px;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+}
