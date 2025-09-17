@@ -1,0 +1,23 @@
+{
+  "name": "webapps",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dgutman/webapps.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dgutman/webapps/issues"
+  },
+  "homepage": "https://github.com/dgutman/webapps#readme",
+  "devDependencies": {
+    "vite": "^4.0.0"
+  }
+}

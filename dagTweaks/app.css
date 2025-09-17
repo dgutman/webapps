@@ -1,0 +1,576 @@
+body {
+    background-color: rgb(65, 64, 64);
+}
+
+.content {
+    text-align: left;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    grid-template-columns: 1fr auto;
+    background-color: white;
+}
+
+.content>div {
+    border: thin black solid;
+}
+
+.right {
+    display: grid;
+    grid-template-rows: auto 1fr;
+}
+
+#header {
+    grid-column: span 2;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    column-gap: 1em;
+    padding: 2px 5px;
+}
+
+#header .dsa-link {
+    width: 20em;
+}
+
+#current-file:empty::after {
+    content: 'No file selected';
+    color: lightgray;
+}
+
+#gui-container {
+    overflow: hidden;
+    display: grid;
+    grid-template-rows: auto auto 1fr;
+}
+
+#paper-gui {
+    overflow: hidden;
+}
+
+#reviewer-controls {
+    display: none;
+}
+
+.annotation-ui-mainwindow {
+    height: 100%;
+    width: 20em;
+}
+
+.annotation-ui-feature-collections {
+    overflow: auto;
+}
+
+input.dsa-link {
+    width: 100%;
+}
+
+#dsa-dialog {
+    /* Let jQuery UI handle positioning and sizing */
+    background: white !important;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    opacity: 1 !important;
+    /* Ensure dialog is fully opaque */
+}
+
+/* jQuery UI dialog styling enhancements */
+.ui-dialog {
+    border: 2px solid #333 !important;
+    border-radius: 8px !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3) !important;
+    max-width: calc(100vw - 40px) !important;
+    max-height: calc(100vh - 40px) !important;
+    background: white !important;
+    opacity: 1 !important;
+}
+
+.ui-dialog-titlebar {
+    background: #f8f9fa !important;
+    border-bottom: 1px solid #dee2e6 !important;
+    color: #495057 !important;
+    font-weight: 600 !important;
+    padding: 10px 45px 10px 15px !important;
+    /* Add right padding for close button */
+    border-radius: 6px 6px 0 0 !important;
+    position: relative !important;
+    min-height: 40px !important;
+}
+
+.ui-dialog-title {
+    font-size: 16px !important;
+}
+
+.ui-dialog-titlebar-close {
+    background: #dc3545 !important;
+    border: none !important;
+    color: white !important;
+    border-radius: 3px !important;
+    width: 30px !important;
+    height: 30px !important;
+    right: 5px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    margin: 0 !important;
+    position: absolute !important;
+}
+
+.ui-dialog-titlebar-close:hover {
+    background: #c82333 !important;
+}
+
+.ui-dialog-titlebar-close .ui-icon {
+    background: none !important;
+    text-indent: 0 !important;
+    overflow: visible !important;
+}
+
+.ui-dialog-titlebar-close .ui-icon::before {
+    content: "×" !important;
+    font-size: 18px !important;
+    line-height: 1 !important;
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+}
+
+
+.dsa-contents .collection,
+.dsa-contents .item {
+    cursor: pointer;
+}
+
+.dsa-contents .folder-header:hover {
+    background-color: lightgoldenrodyellow;
+}
+
+.dsa-contents .item:hover {
+    background-color: aliceblue;
+}
+
+.folder-contents {
+    padding-left: 1.2em;
+}
+
+.folder-contents .folder {
+    order: 0;
+}
+
+.folder-contents .loading::before {
+    content: 'Loading...';
+    opacity: 0.6;
+    cursor: pointer;
+}
+
+.folder-contents:empty::before {
+    content: 'No tiled images found';
+    opacity: 0.6;
+    cursor: pointer;
+}
+
+.folder-contents .item {
+    order: 1;
+}
+
+.folder .fa {
+    padding-right: 0.2em;
+}
+
+.folder.expanded>.folder-header>.fa-folder {
+    display: none;
+}
+
+.folder:not(.expanded)>.folder-header>.fa-folder-open {
+    display: none;
+}
+
+.gui-component {
+    border-bottom: thin black solid;
+}
+
+.magnification-widget {
+    position: relative;
+}
+
+.magnification-widget:not(.expanded) .slider-controls {
+    display: none;
+}
+
+.magnification-widget .slider-controls {
+    position: absolute;
+    background-color: white;
+    right: -5px;
+    /* To offset parent padding */
+    top: -2px;
+    /* To offset parent padding */
+    padding: 10px;
+    padding-top: 1.5em;
+    border-bottom: thin gray solid;
+    border-left: thin gray solid;
+    border-bottom-left-radius: 5px;
+    display: inline-grid;
+    grid-template-rows: auto;
+    grid-template-columns: repeat(16, auto);
+    white-space: nowrap;
+}
+
+.magnification-widget .current-mag {
+    float: right;
+}
+
+.magnification-widget>div {
+    position: relative;
+}
+
+.magnification-widget button {
+    grid-column: 2 span;
+    width: 2.5em;
+}
+
+.magnification-widget input[type='range'] {
+    grid-area: 1 / 1 / 2 / 16;
+}
+
+/* Enhanced DSA login screen styling */
+#dsa-login-screen {
+    background-color: #f8f9fa;
+    color: black;
+    border: 1px solid #dee2e6;
+    border-radius: 6px;
+    padding: 15px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#dsa-login-screen .dsa-intro {
+    font-size: 14px;
+    color: #666;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+#dsa-login-screen .dsa-intro a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+#dsa-login-screen .dsa-intro a:hover {
+    text-decoration: underline;
+}
+
+#dsa-login-screen .right {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
+}
+
+#dsa-login-screen input[type="text"],
+#dsa-login-screen input[type="password"] {
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    min-width: 120px;
+}
+
+#dsa-login-screen input[type="text"]:focus,
+#dsa-login-screen input[type="password"]:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+#dsa-login-screen button {
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.2s;
+}
+
+#dsa-login-screen button:hover {
+    background-color: #0056b3;
+}
+
+#dsa-login-screen.login-error {
+    border-color: #dc3545;
+}
+
+#dsa-login-screen.login-error::after {
+    content: 'Login failed';
+    color: #dc3545;
+    font-size: 14px;
+    text-align: center;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+/* DSA Dialog Content Styling */
+#dsa-dialog .dsa-contents {
+    padding: 0 20px 10px 20px;
+}
+
+/* Make collections section specifically scrollable */
+#dsa-dialog .dsa-contents.dsa-collections {
+    max-height: 300px;
+    overflow-y: auto;
+    padding-right: 15px;
+    /* Account for scrollbar */
+    margin-right: 5px;
+}
+
+/* Custom scrollbar styling */
+#dsa-dialog .dsa-contents.dsa-collections::-webkit-scrollbar {
+    width: 8px;
+}
+
+#dsa-dialog .dsa-contents.dsa-collections::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+#dsa-dialog .dsa-contents.dsa-collections::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 4px;
+}
+
+#dsa-dialog .dsa-contents.dsa-collections::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
+}
+
+/* Section headers styling */
+#dsa-dialog h3 {
+    color: #495057;
+    font-size: 16px;
+    font-weight: 600;
+    margin: 25px 0 15px 0;
+    padding: 10px 15px;
+    background: linear-gradient(135deg, #007bff, #0056b3);
+    color: white;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0, 123, 255, 0.3);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-size: 14px;
+}
+
+#dsa-dialog h3:first-of-type {
+    margin-top: 0;
+}
+
+
+.dsa-collections {
+    max-height: 20vh;
+    /* Adjust the height as needed */
+    overflow-y: scroll;
+    /* Enable vertical scrolling */
+    padding: 8px;
+    box-sizing: border-box;
+}
+
+/* Collections and items styling */
+.dsa-contents .collection,
+.dsa-contents .item {
+    cursor: pointer;
+    padding: 6px 8px;
+    margin: 3px 0;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    border: 1px solid transparent;
+    font-size: 14px;
+    display: block;
+}
+
+.dsa-contents .collection:hover,
+.dsa-contents .item:hover {
+    background-color: #e3f2fd;
+    border-color: #2196f3;
+    transform: translateX(2px);
+    box-shadow: 0 2px 8px rgba(33, 150, 243, 0.2);
+}
+
+.dsa-contents .collection {
+    font-weight: 600;
+    color: #1976d2;
+    background-color: #f5f5f5;
+    border-left: 4px solid #2196f3;
+    margin-bottom: 6px;
+    position: relative;
+}
+
+/* .dsa-contents .collection::before {
+    content: "📁";
+    margin-right: 8px;
+    display: inline;
+    vertical-align: middle;
+    overflow-y: hidden:
+} */
+
+.dsa-contents .item {
+    color: #424242;
+    font-size: 13px;
+    margin-left: 20px;
+    background-color: #fafafa;
+    border-left: 2px solid #e0e0e0;
+}
+
+.dsa-contents .item::before {
+    content: "📄";
+    margin-right: 6px;
+    opacity: 0.7;
+    display: inline;
+    vertical-align: middle;
+}
+
+/* Folder structure styling */
+.folder-contents {
+    padding-left: 20px;
+    border-left: 2px solid #e9ecef;
+    margin-left: 10px;
+}
+
+.folder-header {
+    font-weight: 600;
+    color: #495057;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+.folder-header:hover {
+    background-color: #fff3cd;
+    border-color: #ffeaa7;
+}
+
+.folder-contents .loading::before {
+    content: 'Loading...';
+    opacity: 0.6;
+    color: #6c757d;
+    font-style: italic;
+}
+
+.folder-contents:empty::before {
+    content: 'No tiled images found';
+    opacity: 0.6;
+    color: #6c757d;
+    font-style: italic;
+}
+
+/* Font Awesome icons styling */
+.folder .fa {
+    padding-right: 8px;
+    color: #007bff;
+}
+
+/* Additional content styling */
+.dsa-contents>div:not(.collection):not(.item) {
+    color: #6c757d;
+    font-style: italic;
+    padding: 8px 16px;
+    background-color: #f8f9fa;
+    border-radius: 4px;
+    margin: 10px 0;
+    border-left: 3px solid #28a745;
+}
+
+/* Improve dialog padding and layout */
+#dsa-dialog {
+    padding: 0 !important;
+}
+
+
+.folder-header {
+    display: flex;
+    align-items: center;
+    /* Vertically center the items */
+    padding: 5px;
+    background-color: #f5f5f5;
+    border-radius: 6px;
+    margin-bottom: 6px;
+}
+
+.folder-header::before {
+    content: "📁";
+    /* Use the folder icon */
+    margin-right: 10px;
+    display: inline-block;
+    vertical-align: middle;
+    /* Aligns it vertically with the text */
+}
+
+.collection-item {
+    display: flex;
+    align-items: center;
+    /* Vertically center the items */
+    padding: 5px;
+    /* Add some padding for spacing */
+}
+
+.collection-item::before {
+    content: "📁";
+    /* Use the folder icon */
+    margin-right: 10px;
+    /* Add space between the icon and text */
+    display: inline-block;
+}
+
+
+.ui-dialog-content {
+    padding: 20px !important;
+    overflow: hidden !important;
+    /* Prevent dialog content from overflowing */
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+/* Ensure dialog content fits properly */
+.ui-dialog .ui-dialog-content {
+    max-height: calc(100% - 60px) !important;
+    /* Account for title bar */
+}
+
+/* Style empty state messages */
+.dsa-contents:empty::before {
+    content: 'No items available';
+    color: #6c757d;
+    font-style: italic;
+    display: block;
+    text-align: center;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 4px;
+    border: 2px dashed #dee2e6;
+}
+
+/* Remove duplicate styles - jQuery UI handles dialog positioning */
+#dsa-gui {
+    max-height: 70vh;
+    /* Further limit the height to 70% of the viewport height */
+    overflow-y: auto;
+    /* Ensure vertical scrolling is enabled */
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.collections {
+    max-height: 60vh;
+    /* Limit the height to 60% of the viewport height */
+    overflow-y: auto;
+    /* Enable vertical scrolling */
+    padding: 10px;
+    box-sizing: border-box;
+}

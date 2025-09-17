@@ -1,6 +1,7 @@
 import { RotationControlOverlay } from 'https://cdn.jsdelivr.net/gh/pearcetm/osd-paperjs-annotation@0.4.12/src/js/rotationcontrol.mjs';
 import { BBox } from '../apps/bbox.mjs';
 import { DSAUserInterface } from '../dsa/dsauserinterface.mjs';
+import { Rectangle } from 'https://cdn.jsdelivr.net/gh/pearcetm/osd-paperjs-annotation@0.4.12/src/js/paperitems/rectangle.mjs';
 
 export async function makeAbetaApp() {
     // Load configuration
