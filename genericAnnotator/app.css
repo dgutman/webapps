@@ -64,3 +64,18 @@ body {
     color: white;
     border-color: #0056b3;
 }
+
+.mouse-coords {
+    margin-left: 10px;
+    color: #666;
+    font-size: 0.9em;
+}
+
+.mouse-coords span {
+    color: #333;
+    background-color: #e8f4f8;
+    padding: 2px 4px;
+    border-radius: 3px;
+    border: 1px solid #b3d9e6;
+    font-family: monospace;
+}

@@ -114,6 +114,13 @@ export async function makeAbetaApp() {
         element: viewer.canvas,
         moveHandler: function (event) {
             currentMousePosition = event.position;
+            // Update mouse coordinates display
+            const mouseX = document.getElementById('mouse-x');
+            const mouseY = document.getElementById('mouse-y');
+            if (mouseX && mouseY) {
+                mouseX.textContent = Math.round(event.position.x);
+                mouseY.textContent = Math.round(event.position.y);
+            }
         }
     });
 
