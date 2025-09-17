@@ -94,7 +94,32 @@ export async function makeAbetaApp() {
     roiButton.addEventListener('click', () => switchMode('roi'));
     boundButton.addEventListener('click', () => switchMode('bound'));
 
+    // Zoom button functionality
+    document.getElementById('zoom1x').addEventListener('click', () => {
+        viewer.viewport.zoomTo(1);
+    });
+    document.getElementById('zoom5x').addEventListener('click', () => {
+        viewer.viewport.zoomTo(5);
+    });
+    document.getElementById('zoom10x').addEventListener('click', () => {
+        viewer.viewport.zoomTo(10);
+    });
+    document.getElementById('zoom20x').addEventListener('click', () => {
+        viewer.viewport.zoomTo(20);
+    });
+
+    // Mouse tracking for hotkey functionality
+    let currentMousePosition = null;
+    const mouseTracker = new OpenSeadragon.MouseTracker({
+        element: viewer.canvas,
+        moveHandler: function (event) {
+            currentMousePosition = event.position;
+        }
+    });
+
     viewer.addHandler('open', () => {
+        // Enable mouse tracking after viewer is loaded
+        mouseTracker.setTracking(true);
         dsaUI.getAnnotations(viewer.world.getItemAt(0).source.item._id).then(d => {
             const existingAnnotations = d.filter(a => a.annotation.attributes?.type === ANNOTATION_TYPE);
             const promises = existingAnnotations.map(x => dsaUI.loadAnnotationAsGeoJSON(x._id));
@@ -118,5 +143,37 @@ export async function makeAbetaApp() {
             window.alert('Error! There was a problem saving the annotation(s). Do you need to log in to the DSA? See console for details.');
         });
     });
+
+    // Rectangle creation function
+    function makeRect(pixels, tiledImage, fc, x, y) {
+        const bounds = tiledImage.viewportToImageRectangle(tiledImage.viewport.getBounds());
+        const centerX = x || bounds.x + bounds.width / 2;
+        const centerY = y || bounds.y + bounds.height / 2;
+        const w = pixels;
+        const h = pixels;
+
+        const g = {
+            type: 'Feature',
+            geometry: {
+                type: 'Point',
+                properties: {
+                    subtype: 'Rectangle',
+                    width: w,
+                    height: h,
+                },
+                coordinates: [centerX, centerY]
+            }
+        };
+
+        const r = new Rectangle(g);
+        r.setStyle({
+            rescale: { strokeWidth: 2 },
+            strokeColor: config.rectangleSettings.defaultColor,
+        });
+
+        fc.addChild(r.paperItem);
+        r.paperItem.applyRescale();
+        return r;
+    }
 }
 

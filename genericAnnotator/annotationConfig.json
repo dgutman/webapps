@@ -40,7 +40,15 @@
         "reviewNext": "M",
         "reviewPrevious": "N",
         "classifyNext": "P",
-        "classifyPrevious": "O"
+        "classifyPrevious": "O",
+        "insertRectangle": "b",
+        "toggleRectangleMode": "r"
+    },
+    "rectangleSettings": {
+        "defaultWidth": 100,
+        "defaultHeight": 50,
+        "defaultColor": "red",
+        "defaultOpacity": 0.5
     },
     "annotationType": "A-beta bounding boxes",
     "annotationDescription": "Created by the A-Beta Bounding Box App"
