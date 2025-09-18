@@ -342,24 +342,28 @@ export class GenericAnnotator {
 
 
     openDSAFolderBrowser() {
-        console.log('Moving DSA content to sidebar...');
+        console.log('Opening DSA folder browser...');
 
         const browserArea = document.getElementById('dsa-browser');
-        if (browserArea && this.dsaUI && this.dsaUI.header) {
+        if (browserArea && this.dsaUI) {
             // Clear the browser area
             browserArea.innerHTML = '';
 
-            // Move the DSA header content to our sidebar
-            const headerContent = this.dsaUI.header[0];
-            if (headerContent) {
-                browserArea.appendChild(headerContent);
-                console.log('DSA UI content moved to sidebar');
+            // Automatically connect to DSA and load content
+            if (this.dsaUI.connectToDSA) {
+                const success = this.dsaUI.connectToDSA(this.config.dsaServer);
+                if (success) {
+                    // Trigger the sidebar injection
+                    this.dsaUI.injectIntoSidebar();
+                    console.log('DSA connected and content loaded in sidebar');
+                } else {
+                    console.log('Failed to connect to DSA');
+                    browserArea.innerHTML = '<div style="color: red;">Failed to connect to DSA</div>';
+                }
             }
         } else {
-            console.log('Could not move DSA UI to sidebar');
-            console.log('Browser area:', !!browserArea);
-            console.log('DSA UI:', !!this.dsaUI);
-            console.log('DSA header:', !!(this.dsaUI && this.dsaUI.header));
+            console.log('Could not access DSA UI or browser area');
+            alert('DSA folder browser not available. Please check your connection.');
         }
     }
 

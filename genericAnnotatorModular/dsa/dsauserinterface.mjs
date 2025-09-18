@@ -612,31 +612,11 @@ export class DSAUserInterface extends OpenSeadragon.EventSource {
                 sidebar.appendChild(dialogContent);
                 console.log('DSA content injected into sidebar');
 
-                // Check if we're properly authenticated before loading collections
-                if (this.API && this.API.LoginSystem) {
-                    console.log('Checking authentication status...');
-                    // Try to get user info to verify authentication
-                    this.API.get('user/me').then(user => {
-                        console.log('User authenticated:', user);
-                        this._getCollections();
-                        this._getAnnotatedImages();
-                    }).catch(error => {
-                        console.log('Not authenticated, showing login screen');
-                        // Show login screen in sidebar
-                        const loginContainer = sidebar.querySelector('.login');
-                        if (loginContainer) {
-                            const loginScreen = this.API.LoginSystem.getLoginScreen();
-                            loginContainer.innerHTML = '';
-                            loginContainer.appendChild(loginScreen[0]);
-
-                            // Listen for successful login
-                            loginScreen.on('logged-in', () => {
-                                console.log('Login successful, loading collections');
-                                this._getCollections();
-                                this._getAnnotatedImages();
-                            });
-                        }
-                    });
+                // Load collections directly since parent app handles authentication
+                if (this.API) {
+                    console.log('Loading collections (authentication handled by parent app)');
+                    this._getCollections();
+                    this._getAnnotatedImages();
                 }
             }
         } else {
@@ -724,7 +704,7 @@ class HashInfo {
 function dialogHtml() {
     return `
     <div class="dsa-dialog dsaui">
-        <div class="login"></div>
+        <div class="login" style="display: none;"></div>
         <h3>Recently annotated images (up to 10)</h3>
         <div class="dsa-contents dsa-annotated-images"></div>
         <h3>Collections</h3>
@@ -734,7 +714,7 @@ function dialogHtml() {
 }
 function headerHtml() {
     return `
-    <div class="dsa-header dsaui">
+    <div class="dsa-header dsaui" style="display: none;">
         <input type="text" placeholder="Paste link to a DSA instance" class="dsa-link"><button class="dsa-go">Open DSA</button>
         <span class="item-navigation">
             <span class="item-navigation-text">
