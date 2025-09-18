@@ -15,7 +15,7 @@ const defaultConfig = {
         classifyNext: 'P',
         classifyPrevious: 'O',
         insertRectangle: 'b',
-        toggleRectangleMode: 'r'
+        toggleRectangleMode: 't'  // Changed from 'r' since 'r' is used for rotation
     },
     rectangleSettings: {
         defaultWidth: 100,

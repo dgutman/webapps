@@ -437,3 +437,99 @@ body {
     border: 1px solid #b3d9e6;
     font-family: monospace;
 }
+
+/* Hotkey Help Modal */
+.hotkey-help-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hotkey-help-content {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    max-width: 600px;
+    max-height: 80vh;
+    overflow-y: auto;
+    margin: 20px;
+}
+
+.hotkey-help-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.hotkey-help-header h3 {
+    margin: 0;
+    color: #2c3e50;
+}
+
+.hotkey-help-close {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #7f8c8d;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hotkey-help-close:hover {
+    color: #e74c3c;
+}
+
+.hotkey-help-body {
+    padding: 20px;
+}
+
+.hotkey-section {
+    margin-bottom: 25px;
+}
+
+.hotkey-section h4 {
+    margin: 0 0 15px 0;
+    color: #34495e;
+    font-size: 1.1em;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 5px;
+}
+
+.hotkey-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 8px 0;
+}
+
+.hotkey-key {
+    background: #34495e;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-family: monospace;
+    font-weight: bold;
+    min-width: 30px;
+    text-align: center;
+    margin-right: 15px;
+    font-size: 0.9em;
+}
+
+.hotkey-desc {
+    color: #2c3e50;
+    flex: 1;
+}

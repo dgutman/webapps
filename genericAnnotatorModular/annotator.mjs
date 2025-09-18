@@ -151,6 +151,9 @@ export class GenericAnnotator {
         // Setup sidebar toggle functionality
         this.setupSidebarToggle();
 
+        // Setup hotkey help modal
+        this.setupHotkeyHelp();
+
         // Update login status
         this.updateLoginStatus('Not logged in');
 
@@ -424,6 +427,40 @@ export class GenericAnnotator {
         }
     }
 
+    setupHotkeyHelp() {
+        const hotkeyHelpModal = document.getElementById('hotkey-help-modal');
+        const hotkeyHelpClose = document.getElementById('hotkey-help-close');
+
+        if (hotkeyHelpClose) {
+            hotkeyHelpClose.addEventListener('click', () => {
+                this.hideHotkeyHelp();
+            });
+        }
+
+        // Close modal when clicking outside
+        if (hotkeyHelpModal) {
+            hotkeyHelpModal.addEventListener('click', (event) => {
+                if (event.target === hotkeyHelpModal) {
+                    this.hideHotkeyHelp();
+                }
+            });
+        }
+    }
+
+    showHotkeyHelp() {
+        const hotkeyHelpModal = document.getElementById('hotkey-help-modal');
+        if (hotkeyHelpModal) {
+            hotkeyHelpModal.style.display = 'flex';
+        }
+    }
+
+    hideHotkeyHelp() {
+        const hotkeyHelpModal = document.getElementById('hotkey-help-modal');
+        if (hotkeyHelpModal) {
+            hotkeyHelpModal.style.display = 'none';
+        }
+    }
+
     showImageSelectionDialog() {
         // Create image selection dialog
         const dialog = $(`
@@ -648,8 +685,15 @@ export class GenericAnnotator {
                         this.enterRectangleMode();
                     }
                 }
-                if (event.key === 'Escape' && this.isRectangleMode) {
-                    this.exitRectangleMode();
+                if (event.key === '?') {
+                    this.showHotkeyHelp();
+                }
+                if (event.key === 'Escape') {
+                    if (this.isRectangleMode) {
+                        this.exitRectangleMode();
+                    } else {
+                        this.hideHotkeyHelp();
+                    }
                 }
             } catch (error) {
                 console.error('Hotkey error:', error);

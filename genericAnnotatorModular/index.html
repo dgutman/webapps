@@ -51,9 +51,8 @@
                 </div>
                 <div class="header-right">
                     <div class="hotkey-info" id="hotkey-info">
-                        <small>Hotkeys: <strong>B</strong> = instant rectangle at cursor | <strong>R</strong> = toggle
-                            click
-                            mode</small>
+                        <small>Hotkeys: <strong>B</strong> = instant rectangle | <strong>T</strong> = toggle mode |
+                            <strong>?</strong> = help</small>
                     </div>
                     <div id="mouse-coords" class="mouse-coords">
                         <small>Mouse: <span id="mouse-x">--</span>, <span id="mouse-y">--</span></small>
@@ -77,6 +76,97 @@
                 </div>
                 <div id="dsa-browser" class="dsa-browser">
                     <!-- DSA folder browser will be inserted here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hotkey Help Modal -->
+    <div id="hotkey-help-modal" class="hotkey-help-modal" style="display: none;">
+        <div class="hotkey-help-content">
+            <div class="hotkey-help-header">
+                <h3>Keyboard Shortcuts</h3>
+                <button id="hotkey-help-close" class="hotkey-help-close">×</button>
+            </div>
+            <div class="hotkey-help-body">
+                <div class="hotkey-section">
+                    <h4>Rectangle Tools</h4>
+                    <div class="hotkey-item">
+                        <span class="hotkey-key">B</span>
+                        <span class="hotkey-desc">Place rectangle at cursor position</span>
+                    </div>
+                    <div class="hotkey-item">
+                        <span class="hotkey-key">T</span>
+                        <span class="hotkey-desc">Toggle rectangle drawing mode</span>
+                    </div>
+                </div>
+
+                <div class="hotkey-section">
+                    <h4>Navigation</h4>
+                    <div class="hotkey-item">
+                        <span class="hotkey-key">R</span>
+                        <span class="hotkey-desc">Rotate image</span>
+                    </div>
+                    <div class="hotkey-item">
+                        <span class="hotkey-key">Mouse Wheel</span>
+                        <span class="hotkey-desc">Zoom in/out</span>
+                    </div>
+                    <div class="hotkey-item">
+                        <span class="hotkey-key">Drag</span>
+                        <span class="hotkey-desc">Pan image</span>
+                    </div>
+                </div>
+
+                <div class="hotkey-section">
+                    <h4>Annotation Review</h4>
+                    <div class="hotkey-item">
+                        <span class="hotkey-key">M</span>
+                        <span class="hotkey-desc">Review next annotation</span>
+                    </div>
+                    <div class="hotkey-item">
+                        <span class="hotkey-key">N</span>
+                        <span class="hotkey-desc">Review previous annotation</span>
+                    </div>
+                    <div class="hotkey-item">
+                        <span class="hotkey-key">P</span>
+                        <span class="hotkey-desc">Classify next annotation</span>
+                    </div>
+                    <div class="hotkey-item">
+                        <span class="hotkey-key">O</span>
+                        <span class="hotkey-desc">Classify previous annotation</span>
+                    </div>
+                </div>
+
+                <div class="hotkey-section">
+                    <h4>Annotation Classes</h4>
+                    <div class="hotkey-item">
+                        <span class="hotkey-key">D</span>
+                        <span class="hotkey-desc">Diffuse</span>
+                    </div>
+                    <div class="hotkey-item">
+                        <span class="hotkey-key">F</span>
+                        <span class="hotkey-desc">Cored</span>
+                    </div>
+                    <div class="hotkey-item">
+                        <span class="hotkey-key">G</span>
+                        <span class="hotkey-desc">Dyshoric</span>
+                    </div>
+                    <div class="hotkey-item">
+                        <span class="hotkey-key">H</span>
+                        <span class="hotkey-desc">CAA</span>
+                    </div>
+                </div>
+
+                <div class="hotkey-section">
+                    <h4>General</h4>
+                    <div class="hotkey-item">
+                        <span class="hotkey-key">?</span>
+                        <span class="hotkey-desc">Show this help</span>
+                    </div>
+                    <div class="hotkey-item">
+                        <span class="hotkey-key">Escape</span>
+                        <span class="hotkey-desc">Exit rectangle mode</span>
+                    </div>
                 </div>
             </div>
         </div>
