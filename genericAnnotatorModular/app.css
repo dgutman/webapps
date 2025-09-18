@@ -1,0 +1,439 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Top Toolbar */
+#top-toolbar {
+    background: #2c3e50;
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+.toolbar-left h1 {
+    margin: 0;
+    font-size: 1.5em;
+    font-weight: 300;
+}
+
+.toolbar-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.toolbar-right .login-status {
+    font-size: 0.9em;
+    color: #ecf0f1;
+}
+
+.toolbar-right .login-btn {
+    padding: 6px 12px;
+    border: 1px solid #3498db;
+    background: #3498db;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: background 0.2s;
+}
+
+.toolbar-right .login-btn:hover {
+    background: #2980b9;
+}
+
+.toolbar-right .logout-btn {
+    padding: 6px 12px;
+    border: 1px solid #e74c3c;
+    background: #e74c3c;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: background 0.2s;
+}
+
+.toolbar-right .logout-btn:hover {
+    background: #c0392b;
+}
+
+.toolbar-right .sidebar-toggle-main {
+    background: #34495e;
+    border: 1px solid #34495e;
+    color: white;
+    padding: 6px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1.2em;
+}
+
+.toolbar-right .sidebar-toggle-main:hover {
+    background: #2c3e50;
+}
+
+.content {
+    display: flex;
+    flex: 1;
+    min-height: 0;
+}
+
+.image-sidebar {
+    width: 300px;
+    background-color: #f8f9fa;
+    border-left: 1px solid #dee2e6;
+    display: flex;
+    flex-direction: column;
+    transition: width 0.3s ease;
+}
+
+.image-sidebar.collapsed {
+    width: 0;
+    overflow: hidden;
+}
+
+.sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    background-color: #e9ecef;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.sidebar-header h3 {
+    margin: 0;
+    font-size: 1.1em;
+    color: #495057;
+}
+
+.sidebar-toggle {
+    background: none;
+    border: none;
+    font-size: 1.5em;
+    cursor: pointer;
+    color: #6c757d;
+    padding: 0;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sidebar-toggle:hover {
+    color: #495057;
+}
+
+.sidebar-content {
+    flex: 1;
+    padding: 15px;
+    overflow-y: auto;
+}
+
+.dsa-browser {
+    margin-top: 15px;
+    min-height: 200px;
+    flex: 1;
+    overflow-y: auto;
+}
+
+/* DSA Folder Browser Styles */
+.dsa-folder-browser {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.folder-browser-header {
+    padding: 10px;
+    border-bottom: 1px solid #dee2e6;
+    background: #f8f9fa;
+}
+
+.folder-browser-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.folder-browser-header h4 {
+    margin: 0;
+    font-size: 1.1em;
+    color: #495057;
+}
+
+.load-dsa-btn {
+    padding: 4px 8px;
+    border: 1px solid #007cba;
+    background: #007cba;
+    color: white;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 0.8em;
+    transition: background 0.2s;
+}
+
+.load-dsa-btn:hover {
+    background: #005a87;
+}
+
+.folder-browser-content {
+    flex: 1;
+    overflow-y: auto;
+}
+
+.loading {
+    padding: 20px;
+    text-align: center;
+    color: #6c757d;
+    font-style: italic;
+}
+
+.folder-list {
+    padding: 5px;
+}
+
+.folder-item {
+    padding: 8px 12px;
+    margin: 2px 0;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    border: 1px solid transparent;
+}
+
+.folder-item:hover {
+    background-color: #e9ecef;
+    border-color: #dee2e6;
+}
+
+.folder-item.back-button {
+    background-color: #f8f9fa;
+    border-color: #dee2e6;
+    font-weight: bold;
+    color: #495057;
+}
+
+.folder-item.back-button:hover {
+    background-color: #e9ecef;
+}
+
+.folder-item.collection-header {
+    background-color: #e3f2fd;
+    border-color: #90caf9;
+    font-weight: bold;
+    color: #1565c0;
+    cursor: default;
+}
+
+.folder-item.collection-header:hover {
+    background-color: #e3f2fd;
+}
+
+.folder-item.image-item {
+    background-color: #f0f8ff;
+    border-color: #b3d9ff;
+}
+
+.folder-item.image-item:hover {
+    background-color: #e6f3ff;
+}
+
+.folder-name,
+.item-name {
+    font-size: 0.9em;
+    color: #495057;
+}
+
+.image-item .item-name {
+    color: #0066cc;
+}
+
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    /* Allows flex item to shrink below content size */
+}
+
+.sidebar-toggle-main {
+    background: none;
+    border: 1px solid #6c757d;
+    color: #6c757d;
+    padding: 6px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1.2em;
+}
+
+.sidebar-toggle-main:hover {
+    background-color: #6c757d;
+    color: white;
+}
+
+.dsa-ui-container {
+    padding: 10px;
+    background-color: #f5f5f5;
+    border-bottom: 1px solid #ddd;
+}
+
+#header {
+    grid-column: span 2;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    column-gap: 1em;
+    padding: 2px 5px;
+    align-items: center;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+}
+
+.login-section {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 2px;
+}
+
+.browse-btn {
+    padding: 6px 12px;
+    border: 1px solid #28a745;
+    background: #28a745;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: background 0.2s;
+}
+
+.browse-btn:hover {
+    background: #218838;
+}
+
+.login-btn {
+    padding: 6px 12px;
+    border: 1px solid #007cba;
+    background: #007cba;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: background 0.2s;
+}
+
+.login-btn:hover {
+    background: #005a87;
+}
+
+.login-status {
+    font-size: 0.8em;
+    color: #666;
+    font-style: italic;
+}
+
+#header .dsa-link {
+    width: 20em;
+}
+
+#viewer-container {
+    flex: 1;
+    min-height: 0;
+}
+
+#viewer {
+    background-color: #000;
+    width: 100%;
+    height: 100%;
+}
+
+#annotation-controls {
+    padding: 10px;
+    background-color: #f5f5f5;
+    border-top: 1px solid #ddd;
+}
+
+/* Annotation control buttons */
+.annotation-button {
+    padding: 8px 16px;
+    margin: 4px;
+    border: none;
+    border-radius: 4px;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+}
+
+.annotation-button:hover {
+    background-color: #45a049;
+}
+
+/* Hotkey indicators */
+.hotkey {
+    font-size: 0.8em;
+    color: #666;
+    margin-left: 8px;
+}
+
+#magnification-controls {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    margin-left: 1em;
+}
+
+#magnification-controls button {
+    padding: 6px 12px;
+    border: 1px solid #bbb;
+    background: #f8f8f8;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background 0.2s;
+}
+
+#magnification-controls button:hover {
+    background: #e0e0e0;
+}
+
+.hotkey-info {
+    margin-left: 10px;
+    color: #666;
+    font-size: 0.9em;
+}
+
+.hotkey-info strong {
+    color: #333;
+    background-color: #f0f0f0;
+    padding: 2px 4px;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+}
+
+.mouse-coords {
+    margin-left: 10px;
+    color: #666;
+    font-size: 0.9em;
+}
+
+.mouse-coords span {
+    color: #333;
+    background-color: #e8f4f8;
+    padding: 2px 4px;
+    border-radius: 3px;
+    border: 1px solid #b3d9e6;
+    font-family: monospace;
+}

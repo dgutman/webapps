@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Generic DSA Annotator - Modular Version</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/themes/ui-lightness/jquery-ui.css">
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/openseadragon/4.1.1/openseadragon.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/paper.js/0.12.17/paper-full.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/openseadragon-scalebar@2.0.0/openseadragon-scalebar.min.js"></script>
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/openseadragon-scalebar@2.0.0/openseadragon-scalebar.min.css">
+    <script type="module" src="./app.mjs"></script>
+    <link rel="stylesheet" href="./dsa/dsa.css">
+    <link rel="stylesheet" href="./dsa/dsauserinterface.css">
+    <link rel="stylesheet" href="./app.css">
+    <link rel="stylesheet" href="./apps/bbox.css">
+</head>
+
+<body>
+    <!-- Top Toolbar -->
+    <div id="top-toolbar">
+        <div class="toolbar-left">
+            <h1>DSA Generic Annotator</h1>
+        </div>
+        <div class="toolbar-right">
+            <div id="login-status" class="login-status">Not logged in</div>
+            <button id="login-btn" class="login-btn">Login to DSA</button>
+            <button id="logout-btn" class="logout-btn" style="display: none;">Logout</button>
+            <button id="sidebar-toggle-main" class="sidebar-toggle-main">☰</button>
+        </div>
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="content">
+        <!-- Viewer Area -->
+        <div class="main-content">
+            <div id="header">
+                <div id="annotation-controls"></div>
+                <div id="magnification-controls">
+                    <button id="zoom1x">1x</button>
+                    <button id="zoom5x">5x</button>
+                    <button id="zoom10x">10x</button>
+                    <button id="zoom20x">20x</button>
+                </div>
+                <div class="header-right">
+                    <div class="hotkey-info" id="hotkey-info">
+                        <small>Hotkeys: <strong>B</strong> = instant rectangle at cursor | <strong>R</strong> = toggle
+                            click
+                            mode</small>
+                    </div>
+                    <div id="mouse-coords" class="mouse-coords">
+                        <small>Mouse: <span id="mouse-x">--</span>, <span id="mouse-y">--</span></small>
+                    </div>
+                </div>
+            </div>
+            <div id="viewer-container">
+                <div id='viewer' class="viewer"></div>
+            </div>
+        </div>
+
+        <!-- Image Navigation Sidebar (Right Side) -->
+        <div id="image-sidebar" class="image-sidebar collapsed">
+            <div class="sidebar-header">
+                <h3>Image Browser</h3>
+                <button id="sidebar-toggle" class="sidebar-toggle">×</button>
+            </div>
+            <div class="sidebar-content">
+                <div class="login-section">
+                    <button id="browse-btn" class="browse-btn">Browse Images</button>
+                </div>
+                <div id="dsa-browser" class="dsa-browser">
+                    <!-- DSA folder browser will be inserted here -->
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
